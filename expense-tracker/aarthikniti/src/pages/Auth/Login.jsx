@@ -127,10 +127,11 @@ function Login() {
               <label htmlFor="rememberMe" className="text-sm cursor-pointer">                 
                 Remember me               
               </label>             
-            </div>             
-            <a href="#" className="text-sm text-green-800 hover:underline">               
-              Forgot password?             
-            </a>           
+            </div>
+            <Link to="/forgotpw" className="text-sm text-green-800 hover:underline">
+             Forgot password?
+            </Link>
+          
           </div>            
 
           <button             

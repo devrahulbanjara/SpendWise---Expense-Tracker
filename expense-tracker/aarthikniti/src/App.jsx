@@ -11,6 +11,7 @@ import Signup from './pages/Auth/Signup';
 import Home from './pages/Dashboard/Home';
 import Income from './pages/Dashboard/Income';
 import Expense from './pages/Dashboard/Expense';
+import ForgotPassword from './pages/Auth/forgotpassword';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/dashboard' exact element={<Home />} />
           <Route path='/income' exact element={<Income />} />
           <Route path='/expense' exact element={<Expense />} />
+          <Route path='/forgotpw' exact element={<ForgotPassword/>} />
         </Routes>
       </Router>
     </div>
