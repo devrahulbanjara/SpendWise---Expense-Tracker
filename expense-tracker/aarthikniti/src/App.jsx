@@ -1,11 +1,11 @@
 import React from 'react'
-
-import{
+import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
+
 import Login from './pages/Auth/Login';
 import Signup from './pages/Auth/Signup';
 import Income from './pages/Dashboard/Income';
@@ -19,26 +19,26 @@ const App = () => {
       <Router>
         <Routes>
           <Route path='/' element={<Root />} />
-          <Route path='/login' exact element={<Login />} />
-          <Route path='/signup' exact element={<Signup />} />
-          <Route path='/dashboard' exact element={<DashboardPage />} />
-          <Route path='/income' exact element={<Income />} />
-          <Route path='/expense' exact element={<Expense />} />
-          <Route path='/forgotpw' exact element={<ForgotPassword/>} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/dashboard' element={<DashboardPage />} />
+          <Route path='/income' element={<Income />} />
+          <Route path='/expense' element={<Expense />} />
+          <Route path='/forgotpw' element={<ForgotPassword />} />
         </Routes>
       </Router>
     </div>
-  )
+  );
 }
-
-export default App
 
 const Root = () => {
   const isAuthenticated = !!localStorage.getItem("token");
 
   return isAuthenticated ? (
-    <Navigate to= "/dashboard" />
+    <Navigate to="/dashboard" />
   ) : (
-    <Navigate to= "/login" />
+    <Navigate to="/login" />
   );
 };
+
+export default App;
