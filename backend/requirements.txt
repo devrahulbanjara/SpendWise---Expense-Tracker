@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+motor
+pymongo
+python-dotenv
+passlib
+bcrypt
+pyjwt
+pip install pydantic[email]
