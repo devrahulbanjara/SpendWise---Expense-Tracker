@@ -6,4 +6,4 @@ python-dotenv
 passlib
 bcrypt
 pyjwt
-pip install pydantic[email]
+pydantic[email]
