@@ -12,9 +12,14 @@ function Login() {
   const validatePassword = (password) => {     
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#&*])(?=.*[A-Z])[A-Za-z\d@#&*]{8,}$/;     
     return passwordRegex.test(password);   
-  };    
+  };
+  
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-  const handleSubmit = (e) => {     
+  const handleSubmit = async (e) => {     
     e.preventDefault();        
 
     if (!email) {       
@@ -24,21 +29,40 @@ function Login() {
     if (!password) {       
       setError("Password is required");       
       return;     
-    }        
+    }
 
-    if (!email.includes("@")) {       
-      setError("Email must include '@'");       
-      return;     
-    }        
+    if (!validateEmail(email)) {
+      setError("Enter a valid email (e.g., example@mail.com)");
+      return;
+    }           
 
     if (!validatePassword(password)) {       
       setError("Password must be at least 8 characters long with a letter, number & special character.");       
       return;     
-    }        
-
-    setError("");     
-    alert("Login successful!");   
-  };      
+    }
+    try {
+      const response = await fetch("http://127.0.0.1:8000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        setError(data.detail || "Login failed");
+        return;
+      }
+  
+      localStorage.setItem("token", data.access_token);
+  
+      alert("Login successful!");
+      window.location.href = "/dashboard";
+    } catch (error) {
+      console.error("Error logging in:", error);
+      setError("Something went wrong. Please try again.");
+    }
+  };
 
   const handleKeyDown = (e) => {     
     if (e.key === "Enter") {       

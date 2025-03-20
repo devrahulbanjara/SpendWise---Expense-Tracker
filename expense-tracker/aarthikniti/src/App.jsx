@@ -8,10 +8,10 @@ import{
 } from "react-router-dom";
 import Login from './pages/Auth/Login';
 import Signup from './pages/Auth/Signup';
-import Home from './pages/Dashboard/Home';
 import Income from './pages/Dashboard/Income';
 import Expense from './pages/Dashboard/Expense';
 import ForgotPassword from './pages/Auth/forgotpassword';
+import DashboardPage from './pages/Dashboard/DashboardPage';
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
           <Route path='/' element={<Root />} />
           <Route path='/login' exact element={<Login />} />
           <Route path='/signup' exact element={<Signup />} />
-          <Route path='/dashboard' exact element={<Home />} />
+          <Route path='/dashboard' exact element={<DashboardPage />} />
           <Route path='/income' exact element={<Income />} />
           <Route path='/expense' exact element={<Expense />} />
           <Route path='/forgotpw' exact element={<ForgotPassword/>} />
