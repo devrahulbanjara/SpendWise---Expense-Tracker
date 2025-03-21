@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import auth, profile
 from routes.transactions import router as transactions_router 
+from routes import auth, profile
 
 app = FastAPI()
 

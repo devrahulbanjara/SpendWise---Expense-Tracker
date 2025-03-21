@@ -26,7 +26,7 @@ async def signup(user: SignupRequest):
     user_id = await get_next_user_id()
 
     new_user = {
-        "user_id": user_id,
+        "user_id": 1,
         "full_name": user.full_name,
         "email": user.email,
         "password": hashed_password,
@@ -35,8 +35,8 @@ async def signup(user: SignupRequest):
     }
     await users_collection.insert_one(new_user)
 
-    active_profile_id = await create_default_profile(user_id)
-    await users_collection.update_one({"user_id": user_id}, {"$set": {"active_profile_id": active_profile_id}})
+    active_profile_id = await create_default_profile(1)
+    await users_collection.update_one({"user_id": 1}, {"$set": {"active_profile_id": active_profile_id}})
 
     return UserResponse(**new_user)
 
